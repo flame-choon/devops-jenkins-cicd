@@ -36,7 +36,7 @@ pipeline {
                         chmod +x ${env.ECR_LOGIN_HELPER}
                         mv ${env.ECR_LOGIN_HELPER} /usr/local/bin/
                         cd ${env.PROJECT_PATH}
-                        ./gradlew jib -Djib.to.image=${env.ECR_URL}/${env.ECR_REPOSITORY_NAME}:${env.ECR_IMAGE_TAG} -Djib.console='plain'
+                        ./gradlew jib -Djib.to.image=${env.ECR_URL}/${env.ECR_REPOSITORY_NAME} -Djib.to.tags=${env.ECR_IMAGE_TAG} -Djib.console='plain'
                     """
                 }
             }
