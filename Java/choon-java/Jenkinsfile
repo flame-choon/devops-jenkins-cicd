@@ -1,4 +1,4 @@
-
+def maniDir="Java/choon-java/"
 
 pipeline {
     agent any
@@ -7,6 +7,14 @@ pipeline {
         stage('Pull Codes from GitHub') {
             steps{
                 checkout scm
+            }
+        }
+        stage('Build Codes by Gradle') {
+            steps {
+                sh """
+                cd ${mainDir}
+                ./gradlew clean build
+                """
             }
         }
     }
