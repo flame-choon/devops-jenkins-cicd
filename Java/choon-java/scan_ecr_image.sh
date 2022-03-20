@@ -26,7 +26,8 @@ aws ecr describe-image-scan-findings --repository-name $REPOSITORY_NAME --image-
 # find Severity Counts
 echo --- find SeverityCounts ---
 
-SEVERITY_COUNTS_OBJECT=$(cat describe-image.json | jq '.imageScanFinding.findingSeverityCounts')
+SEVERITY_COUNTS_OBJECT=$(cat describe-image.json | jq '.imageScanFindings.findingSeverityCounts')
+echo $SEVERITY_COUNTS_OBJECT
 MEDIUM_VALUE=$(echo $SEVERITY_COUNTS_OBJECT | jq '.MEDIUM // 0')
 HIGH_VALUE=$(echo $SEVERITY_COUNTS_OBJECT | jq '.HIGH // 0')
 
