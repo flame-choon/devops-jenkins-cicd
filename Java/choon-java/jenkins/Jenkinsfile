@@ -29,7 +29,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube', envOnly: true) {
+                withSonarQubeEnv('sonarqube') {
                     sh "cat ${env.SONAR_HOST_URl}"
                 }
             }
