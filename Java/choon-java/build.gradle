@@ -24,8 +24,8 @@ tasks.named('test') {
 
 jib {
 	from {
-//		image = 'adoptopenjdk/openjdk11:alpine-jre'
-		image = 'openjdk:11.0.14.1-oracle'
+		image = 'adoptopenjdk/openjdk11:alpine-jre'
+//		image = 'openjdk:11.0.14.1-oracle'
 	}
 	// AWS ECR Repository URL 및 Tag 입력
 //	to {
