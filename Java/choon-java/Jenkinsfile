@@ -7,7 +7,7 @@ pipeline {
         ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
         ECR_URL = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_REPOSITORY_NAME = 'kwangjin-repository'
-        ECR_IMAGE_TAG = '2.9.13'
+        ECR_IMAGE_TAG = '2.9.14'
 
     }
 
@@ -39,6 +39,17 @@ pipeline {
                         ./gradlew jib -Djib.to.image=${env.ECR_URL}/${env.ECR_REPOSITORY_NAME} -Djib.to.tags=${env.ECR_IMAGE_TAG} -Djib.console='plain'
                     """
                 }
+            }
+        }
+        stage('Scan ECR Image'){
+            steps {
+                sh """
+                    REPOSITORY_NAME=kwangjin-repository
+
+                    # Repository의 Image 조회
+                    echo RUN aws ecr list-images
+                    aws ecr list-images --repository-name $REPOSITORY_NAME > list-images.json
+                """
             }
         }
 
