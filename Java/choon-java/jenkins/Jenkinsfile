@@ -37,6 +37,13 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
 //         stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
 //             steps {
 //                 withAWS(region:"${env.AWS_REGION}", credentials:"aws-key") {
