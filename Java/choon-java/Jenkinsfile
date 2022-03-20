@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         PROJECT_PATH = 'Java/choon-java'
+        AWS_REGION = 'ap-northeast-2'
+        ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
     }
 
     stages {
@@ -21,5 +23,24 @@ pipeline {
                 """
             }
         }
+        stage ('Test') {
+            steps {
+                sh "aws --version"
+            }
+        }
+//         stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
+//             steps {
+//                 withAWS(region:"${env.AWS_REGION}", credentials:"aws-key") {
+//                     ecrLogin()
+//                     sh """
+//                         curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${env.ECR_LOGIN_HELPER}
+//                         chmod +x ${env.ECR_LOGIN_HELPER}
+//                         mv ${env.ECR_LOGIN_HELPER} /usr/local/bin/
+//                         cd ${env.PROJECT_PATH}
+//                         ./gradlew jib -Djib.to.image=${ecrUrl}/${repository}:${tagName} -Djib.console='plain'
+//                     """
+//                 }
+//             }
+//         }
     }
 }
