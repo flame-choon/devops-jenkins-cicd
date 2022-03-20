@@ -1,7 +1,9 @@
-def maniDir="Java/choon-java/"
-
 pipeline {
     agent any
+
+    environment {
+        PROJECT_PATH = 'Java/choon-java'
+    }
 
     stages {
         stage('Pull Codes from GitHub') {
@@ -12,7 +14,7 @@ pipeline {
         stage('Build Codes by Gradle') {
             steps {
                 sh """
-                cd ${mainDir}
+                cd ${env.PROJECT_PATH}
                 pwd
                 """
             }
