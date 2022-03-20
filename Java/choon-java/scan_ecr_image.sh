@@ -4,12 +4,12 @@ REPOSITORY_NAME=kwangjin-repository
 echo RUN aws ecr list-images
 aws ecr list-images --repository-name $REPOSITORY_NAME > list-images.json
 
-## latest Image Id 추출
-#echo --- extract Latest Image ID ---
-#LATEST_IMAGE_ID=$(cat list-images.json | jq -c '.imageIds[] | select(.imageTag == "latest")' | jq '.imageDigest')
-#
-#echo LATEST_IMAGE_ID : $LATEST_IMAGE_ID
-#
+# latest Image Id 추출
+echo --- extract Latest Image ID ---
+LATEST_IMAGE_ID=$(cat list-images.json | jq -c '.imageIds[] | select(.imageTag == "latest")' | jq '.imageDigest')
+
+echo LATEST_IMAGE_ID : $LATEST_IMAGE_ID
+
 ## wait for scan result
 #echo --- RUN aws ecr wait ---
 #
