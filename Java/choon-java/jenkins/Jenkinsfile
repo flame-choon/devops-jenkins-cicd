@@ -7,7 +7,7 @@ pipeline {
         ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
         ECR_URL = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_REPOSITORY_NAME = 'kwangjin-repository'
-        ECR_IMAGE_TAG = '2.9.18'
+        ECR_IMAGE_TAG = '2.9.19'
 
     }
 
