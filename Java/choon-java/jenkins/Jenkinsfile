@@ -30,7 +30,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh "cat ${env.SONAR_HOST_URl}"
+                    sh "./gradlew sonarqube"
                 }
             }
         }
