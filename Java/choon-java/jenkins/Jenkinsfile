@@ -28,8 +28,10 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            withSonarQubeEnv('sonarqube', envOnly: true) {
-                sh "cat ${env.SONAR_HOST_URl}"
+            steps {
+                withSonarQubeEnv('sonarqube', envOnly: true) {
+                    sh "cat ${env.SONAR_HOST_URl}"
+                }
             }
         }
 //         stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
