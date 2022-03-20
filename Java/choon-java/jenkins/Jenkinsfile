@@ -4,10 +4,11 @@ pipeline {
     environment {
         PROJECT_PATH = 'Java/choon-java'
         AWS_REGION = 'ap-northeast-2'
+        DEPLOY_HOST = '172.31.40.150'
         ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
         ECR_URL = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_REPOSITORY_NAME = 'kwangjin-repository'
-        ECR_IMAGE_TAG = '2.9.20'
+        ECR_IMAGE_TAG = '2.9.21'
 
     }
 
@@ -64,6 +65,16 @@ pipeline {
                 cd ${env.PROJECT_PATH}/jenkins
                 ./scan_ecr_image.sh
                 """
+            }
+        }
+
+        stage('Deploy to AWS EC2 VM'){
+           steps{
+                sshagent(credentials : ["deploy-key"]) {
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@${env.DEPLOY_HOST} \
+                    'aws ecr get-login-password --region ${env.AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URL}/${ECR_REPOSITORY_NAME}; \
+                    docker run -d -p 80:8080 -t ${env.ECR_URL}/${env.ECR_REPOSITORY_NAME}:${env.ECR_IMAGE_TAG};'"
+                }
             }
         }
     }
