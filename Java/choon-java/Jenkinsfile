@@ -7,7 +7,7 @@ pipeline {
         ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
         ECR_URL = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_REPOSITORY_NAME = 'kwangjin-repository'
-        ECR_IMAGE_TAG = '2.9.14'
+        ECR_IMAGE_TAG = '2.9.15'
 
     }
 
@@ -27,20 +27,20 @@ pipeline {
                 """
             }
         }
-//         stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
-//             steps {
-//                 withAWS(region:"${env.AWS_REGION}", credentials:"aws-key") {
-//                     ecrLogin()
-//                     sh """
-//                         curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${env.ECR_LOGIN_HELPER}
-//                         chmod +x ${env.ECR_LOGIN_HELPER}
-//                         mv ${env.ECR_LOGIN_HELPER} /usr/local/bin/
-//                         cd ${env.PROJECT_PATH}
-//                         ./gradlew jib -Djib.to.image=${env.ECR_URL}/${env.ECR_REPOSITORY_NAME} -Djib.to.tags=${env.ECR_IMAGE_TAG} -Djib.console='plain'
-//                     """
-//                 }
-//             }
-//         }
+        stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
+            steps {
+                withAWS(region:"${env.AWS_REGION}", credentials:"aws-key") {
+                    ecrLogin()
+                    sh """
+                        curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${env.ECR_LOGIN_HELPER}
+                        chmod +x ${env.ECR_LOGIN_HELPER}
+                        mv ${env.ECR_LOGIN_HELPER} /usr/local/bin/
+                        cd ${env.PROJECT_PATH}
+                        ./gradlew jib -Djib.to.image=${env.ECR_URL}/${env.ECR_REPOSITORY_NAME} -Djib.to.tags=${env.ECR_IMAGE_TAG} -Djib.console='plain'
+                    """
+                }
+            }
+        }
         stage('Scan ECR Image'){
             steps {
                 sh """
