@@ -8,14 +8,16 @@ pipeline {
     stages {
         stage('Pull Codes from GitHub') {
             steps{
+                sh "echo --- Pull Codes from GitHub ---"
                 checkout scm
             }
         }
         stage('Build Codes by Gradle') {
             steps {
                 sh """
+                echo --- Build Codes by Gradle ---
                 cd ${env.PROJECT_PATH}
-                pwd
+                ./gradlew clean build
                 """
             }
         }
