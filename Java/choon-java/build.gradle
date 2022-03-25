@@ -31,7 +31,7 @@ sonarqube {
 
 jib {
 	from {
-		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11-2.1647448343'
+		image = 'registry.access.redhat.com/ubi8/openjdk-11'
 	}
 
 	container {
@@ -43,11 +43,11 @@ jib {
 		creationTime = 'USE_CURRENT_TIMESTAMP'
 		format = 'Docker'
 	}
-//	extraDirectories {
-//		paths {
-//			path {
-//				from = file('build/libs')
-//			}
-//		}
-//	}
+	extraDirectories {
+		paths {
+			path {
+				from = file('build/libs')
+			}
+		}
+	}
 }
