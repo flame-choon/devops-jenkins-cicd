@@ -32,13 +32,7 @@ sonarqube {
 jib {
 	from {
 		image = 'adoptopenjdk/openjdk11:alpine-jre'
-//		image = 'openjdk:11.0.14.1-oracle'
 	}
-	// AWS ECR Repository URL 및 Tag 입력
-//	to {
-//		image = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com/kwangjin-repository'
-//		tags = ['2.9.8']
-//	}
 
 	container {
 		entrypoint = ['java', '-jar', 'devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
@@ -49,11 +43,11 @@ jib {
 		creationTime = 'USE_CURRENT_TIMESTAMP'
 		format = 'Docker'
 	}
-	extraDirectories {
-		paths {
-			path {
-				from = file('build/libs')
-			}
-		}
-	}
+//	extraDirectories {
+//		paths {
+//			path {
+//				from = file('build/libs')
+//			}
+//		}
+//	}
 }
