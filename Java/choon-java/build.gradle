@@ -31,7 +31,7 @@ sonarqube {
 
 jib {
 	from {
-		image = 'adoptopenjdk/openjdk11:alpine'
+		image = 'adoptopenjdk/openjdk11:x86_64-alpine-jre-11.0.14_9'
 	}
 
 	container {
