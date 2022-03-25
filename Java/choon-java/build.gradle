@@ -31,7 +31,8 @@ sonarqube {
 
 jib {
 	from {
-		image = 'registry.access.redhat.com/ubi8/openjdk-11'
+//		image = 'registry.access.redhat.com/ubi8/openjdk-11'
+		image = 'adoptopenjdk/openjdk11-jre'
 	}
 
 	container {
