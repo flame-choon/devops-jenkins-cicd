@@ -31,7 +31,7 @@ sonarqube {
 
 jib {
 	from {
-//		image = 'registry.access.redhat.com/ubi8/openjdk-11'
+//		image = 'registry.access.redhat.com/ubi8/openjdk-11-runtime'
 		image = 'adoptopenjdk/openjdk11:x86_64-alpine-jre-11.0.14_9'
 	}
 
@@ -44,11 +44,11 @@ jib {
 		creationTime = 'USE_CURRENT_TIMESTAMP'
 		format = 'Docker'
 	}
-//	extraDirectories {
-//		paths {
-//			path {
-//				from = file('build/libs')
-//			}
-//		}
-//	}
+	extraDirectories {
+		paths {
+			path {
+				from = file('build/libs')
+			}
+		}
+	}
 }
