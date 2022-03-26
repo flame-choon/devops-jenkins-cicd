@@ -64,11 +64,11 @@ jib {
 		paths {
 			path {
 				from = file('build/libs')
-				into = '/home/jboss/deployments/libs'
+				into = '/home/jboss'
 			}
-			permissions = [
-					'/home/jboss/deployments/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar': '185'
-			]
+//			permissions = [
+//					'/home/jboss/deployments/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar': '185'
+//			]
 		}
 	}
 }
