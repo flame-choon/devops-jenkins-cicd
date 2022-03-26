@@ -73,7 +73,7 @@ pipeline {
                 sshagent(credentials : ["deploy-key"]) {
                     sh "ssh -o StrictHostKeyChecking=no ubuntu@${env.DEPLOY_HOST} \
                     'aws ecr get-login-password --region ${env.AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URL}/${ECR_REPOSITORY_NAME}; \
-                    docker run -d -it -p 8080:8080 --name choon-java --restart unless-stopped -t ${env.ECR_URL}/${env.ECR_REPOSITORY_NAME}:${env.ECR_IMAGE_TAG};'"
+                    docker run -d -it -p 8088:8088 --name choon-java --restart unless-stopped -t ${env.ECR_URL}/${env.ECR_REPOSITORY_NAME}:${env.ECR_IMAGE_TAG};'"
                 }
             }
         }
