@@ -8,7 +8,7 @@ pipeline {
         ECR_LOGIN_HELPER = 'docker-credential-ecr-login'
         ECR_URL = '767404772322.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_REPOSITORY_NAME = 'kwangjin-repository'
-        ECR_IMAGE_TAG = '2.9.42'
+        ECR_IMAGE_TAG = '2.9.43'
 
     }
 
@@ -38,13 +38,13 @@ pipeline {
                 }
             }
         }
-//         stage('SonarQube Quality Gate') {
-//             steps {
-//                 timeout(time: 1, unit: 'HOURS') {
-//                     waitForQualityGate abortPipeline: true
-//                 }
-//             }
-//         }
+        stage('SonarQube Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
         stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
             steps {
                 withAWS(region:"${env.AWS_REGION}", credentials:"aws-credentials") {
