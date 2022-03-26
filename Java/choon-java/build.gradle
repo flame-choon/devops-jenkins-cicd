@@ -32,42 +32,22 @@ sonarqube {
 jib {
 	from {
 		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11'
-//		image = 'adoptopenjdk/openjdk11:alpine-jre'
-//		image = 'fabric8/java-ubi-openjdk11-jdk:1.9.0'
 	}
-//
+
 	container {
 		entrypoint = ['java', '-jar', '/home/jboss/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
 
-		ports = ['8088']
-//		environment = [
-//			'JAVA_APP_JAR': '/deployment/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar'
-//		]
-//		labels = [version:project.version, name:project.name, group:project.group]
-//		creationTime = 'USE_CURRENT_TIMESTAMP'
-//		format = 'Docker'
+		ports = ['8080']
+		labels = [version:project.version, name:project.name, group:project.group]
+		creationTime = 'USE_CURRENT_TIMESTAMP'
 	}
 
-//	extraDirectories {
-//		paths {
-//			path {
-//				from = file('build/libs')
-//				into = '/deployments/libs'
-//			}
-//			permissions = [
-//					'/deployments/libs': 185
-//			]
-//		}
-//	}
 	extraDirectories {
 		paths {
 			path {
 				from = file('build/libs')
 				into = '/home/jboss'
 			}
-//			permissions = [
-//					'/home/jboss/deployments/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar': '185'
-//			]
 		}
 	}
 }
