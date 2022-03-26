@@ -39,7 +39,7 @@ jib {
 	container {
 //		entrypoint = ['java', '-jar', 'devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
 
-		ports = ['8080']
+		ports = ['8088']
 //		user = 185
 //		environment = [
 //			'JAVA_APP_JAR': '/deployment/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar'
