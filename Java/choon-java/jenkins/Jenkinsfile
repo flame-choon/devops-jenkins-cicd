@@ -28,16 +28,16 @@ pipeline {
                 """
             }
         }
-//         stage('SonarQube Analysis') {
-//             steps {
-//                 withSonarQubeEnv('sonarqube') {
-//                     sh """
-//                     cd ${env.PROJECT_PATH}
-//                     ./gradlew sonarqube
-//                     """
-//                 }
-//             }
-//         }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh """
+                    cd ${env.PROJECT_PATH}
+                    ./gradlew sonarqube
+                    """
+                }
+            }
+        }
 //         stage('SonarQube Quality Gate') {
 //             steps {
 //                 timeout(time: 1, unit: 'HOURS') {
