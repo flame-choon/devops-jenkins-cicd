@@ -31,39 +31,40 @@ sonarqube {
 
 jib {
 	from {
-		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11'
+//		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11'
 //		image = 'adoptopenjdk/openjdk11:x86_64-alpine-jre-11.0.14_9'
+		image = 'fabric8/java-ubi-openjdk11-jdk:1.9.0'
 	}
 //
 	container {
-//		entrypoint = ['java', '-jar', 'devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
+		entrypoint = ['java', '-jar', 'devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
 
 		ports = ['8080']
-		user = 185
-		environment = [
-			'JAVA_APP_JAR': '/deployment/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar'
-		]
+//		user = 185
+//		environment = [
+//			'JAVA_APP_JAR': '/deployment/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar'
+//		]
 //		labels = [version:project.version, name:project.name, group:project.group]
 //		creationTime = 'USE_CURRENT_TIMESTAMP'
 //		format = 'Docker'
 	}
 
-	extraDirectories {
-		paths {
-			path {
-				from = file('build/libs')
-				into = '/deployments/libs'
-			}
-			permissions = [
-					'/deployments/libs': 185
-			]
-		}
-	}
 //	extraDirectories {
 //		paths {
 //			path {
 //				from = file('build/libs')
+//				into = '/deployments/libs'
 //			}
+//			permissions = [
+//					'/deployments/libs': 185
+//			]
 //		}
 //	}
+	extraDirectories {
+		paths {
+			path {
+				from = file('build/libs')
+			}
+		}
+	}
 }
