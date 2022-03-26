@@ -36,7 +36,7 @@ jib {
 	}
 
 	container {
-		entrypoint = ['java', '-jar', 'build/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
+		entrypoint = ['java', '-jar', 'devops.jenkins.cicd-0.0.1-SNAPSHOT.jar']
 		ports = ['8080']
 
 		labels = [version:project.version, name:project.name, group:project.group]
@@ -44,11 +44,11 @@ jib {
 		creationTime = 'USE_CURRENT_TIMESTAMP'
 		format = 'Docker'
 	}
-//	extraDirectories {
-//		paths {
-//			path {
-//				from = file('build/libs')
-//			}
-//		}
-//	}
+	extraDirectories {
+		paths {
+			path {
+				from = file('build/libs')
+			}
+		}
+	}
 }
