@@ -31,8 +31,8 @@ sonarqube {
 
 jib {
 	from {
-//		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11'
-		image = 'adoptopenjdk/openjdk11:alpine-jre'
+		image = 'registry.access.redhat.com/ubi8/openjdk-11:1.11'
+//		image = 'adoptopenjdk/openjdk11:alpine-jre'
 //		image = 'fabric8/java-ubi-openjdk11-jdk:1.9.0'
 	}
 //
