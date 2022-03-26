@@ -44,11 +44,11 @@ jib {
 		creationTime = 'USE_CURRENT_TIMESTAMP'
 		format = 'Docker'
 	}
-	extraDirectories {
-		paths {
-			path {
-				from = file('build/libs')
-			}
-		}
-	}
+//	extraDirectories {
+//		paths {
+//			path {
+//				from = file('build/libs')
+//			}
+//		}
+//	}
 }
