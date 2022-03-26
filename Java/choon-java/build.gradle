@@ -55,7 +55,7 @@ jib {
 				into = '/deployments/libs'
 			}
 			permissions = [
-					'/deployments/libs': '185'
+					'/deployments/libs': 185
 			]
 		}
 	}
