@@ -67,7 +67,7 @@ jib {
 				into = '/home/jboss/deployments/libs'
 			}
 			permissions = [
-					'/home/jboss/deployments/libs': 185
+					'/home/jboss/deployments/libs/devops.jenkins.cicd-0.0.1-SNAPSHOT.jar': 185
 			]
 		}
 	}
