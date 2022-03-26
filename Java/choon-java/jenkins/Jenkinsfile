@@ -59,14 +59,14 @@ pipeline {
                 }
             }
         }
-        stage('Scan ECR Image'){
-            steps {
-                sh """
-                cd ${env.PROJECT_PATH}/jenkins
-                ./scan_ecr_image.sh
-                """
-            }
-        }
+//         stage('Scan ECR Image'){
+//             steps {
+//                 sh """
+//                 cd ${env.PROJECT_PATH}/jenkins
+//                 ./scan_ecr_image.sh
+//                 """
+//             }
+//         }
 
         stage('Deploy to AWS EC2 VM'){
            steps{
